@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#101114">
+	<title>CHEA SHOP</title>
+	<style>
+		:root{--bg:#101114;--panel:#191a1f;--panel2:#202127;--muted:#a6a6af;--text:#f7f7f8;--orange:#ff8a24;--yellow:#ffc24b;--line:#303139;--green:#32c879}
+		*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input{font:inherit}button{cursor:pointer}
+		.topbar{height:74px;border-bottom:1px solid #292a30;background:#141519;display:flex;align-items:center;position:sticky;top:0;z-index:5}.nav{width:min(1160px,calc(100% - 40px));margin:auto;display:flex;align-items:center;gap:32px}.brand{display:flex;align-items:center;gap:10px;font-size:20px;font-weight:850;letter-spacing:-.7px;white-space:nowrap}.brand-mark{width:37px;height:37px;border-radius:11px;object-fit:contain}.brand em{color:var(--orange);font-style:normal}.navlinks{display:flex;gap:25px;margin-left:20px;color:#c5c5ca;font-size:14px}.navlinks a{color:inherit;text-decoration:none}.navlinks a:hover{color:white}.nav-right{margin-left:auto;display:flex;align-items:center;gap:12px}.lang{background:#202127;border:1px solid #373840;color:#eee;border-radius:9px;padding:9px 12px}.login{color:white;text-decoration:none;font-weight:650;padding:9px 15px;border:1px solid #45464d;border-radius:9px}
+		.page{width:min(1160px,calc(100% - 40px));margin:34px auto 70px}.crumb{font-size:13px;color:#96969f;margin-bottom:23px}.crumb span{color:#e0e0e4}.hero{height:210px;border-radius:18px;overflow:hidden;position:relative;background:radial-gradient(ellipse at 76% 10%,#ffb34170,transparent 34%),linear-gradient(110deg,#352115,#7e351b 49%,#19191e);display:flex;align-items:center;padding:35px 48px;margin-bottom:28px;border:1px solid #754422}.hero:after{content:"FF";position:absolute;right:9%;top:-37px;font-size:210px;line-height:1;font-weight:1000;font-style:italic;letter-spacing:-20px;color:#fff1;transform:skew(-12deg)}.hero-content{position:relative;z-index:1;max-width:560px}.eyebrow{color:#ffc15a;text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:800}.hero h1{font-size:34px;line-height:1.13;margin:9px 0 8px;letter-spacing:-1px}.hero p{margin:0;color:#e3d3c7;font-size:14px}.hero-badge{position:absolute;right:45px;bottom:30px;background:#17171bcc;border:1px solid #ffffff27;padding:10px 15px;border-radius:11px;font-weight:700;font-size:13px;z-index:1}
+		.layout{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:24px;align-items:start}.left{display:grid;gap:20px}.card{background:var(--panel);border:1px solid #2e2f36;border-radius:15px;padding:23px}.section-title{display:flex;align-items:center;gap:12px;margin:0 0 18px;font-size:18px;letter-spacing:-.3px}.step{width:29px;height:29px;border-radius:8px;display:grid;place-items:center;background:#ff8a241c;color:#ffad4d;font-size:14px;font-weight:850}.section-note{margin:-10px 0 17px 41px;color:var(--muted);font-size:13px}.player-row{display:flex;gap:12px}.input-wrap{flex:1;position:relative}.input-wrap input{width:100%;height:48px;border-radius:9px;border:1px solid #393a43;background:#121317;color:white;padding:0 14px;outline:0}.input-wrap input:focus{border-color:var(--orange);box-shadow:0 0 0 3px #ff8a2420}.input-wrap input::placeholder{color:#777881}.primary{border:0;border-radius:9px;background:linear-gradient(135deg,#ffad3f,#ff7625);color:#17120c;font-weight:800;padding:0 20px;min-height:48px;box-shadow:0 6px 18px #ff812526}.primary:hover{filter:brightness(1.08)}.verify-msg{display:none;margin:11px 0 0 2px;color:var(--green);font-size:13px}.verify-msg.show{display:block}
+		.packages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.package{position:relative;text-align:left;background:#141519;border:1px solid #34353d;color:var(--text);border-radius:11px;padding:14px 13px;min-height:100px;transition:.15s}.package:hover{border-color:#9c652f;transform:translateY(-1px)}.package.selected{border:1px solid var(--orange);background:#ff8a2410;box-shadow:inset 0 0 0 1px #ff8a2422}.diamonds{font-size:15px;font-weight:800}.diamond-icon{color:#55c7ff;margin-right:5px}.bonus{display:inline-block;color:#ffc15a;font-size:11px;margin-top:3px}.price{display:block;margin-top:8px;color:#c6c6cd;font-weight:650;font-size:13px}.popular{position:absolute;right:8px;top:8px;color:#ffc25b;font-size:9px;text-transform:uppercase;font-weight:850;letter-spacing:.5px}.order-summary{position:sticky;top:95px}.summary-head{font-size:18px;font-weight:800;margin-bottom:17px}.summary-game{display:flex;align-items:center;gap:12px;padding-bottom:17px;border-bottom:1px solid var(--line)}.game-icon{height:49px;width:49px;border-radius:12px;background:linear-gradient(145deg,#faaf43,#c74926);display:grid;place-items:center;font-size:22px;font-weight:1000;font-style:italic;color:#17120c}.game-name{font-weight:750}.game-sub{font-size:12px;color:var(--muted)}.summary-line{display:flex;justify-content:space-between;gap:10px;margin:15px 0;color:#c3c3ca;font-size:13px}.summary-line strong{color:white;text-align:right}.summary-line.total{padding-top:14px;border-top:1px solid var(--line);font-size:15px;font-weight:800;margin-top:18px}.summary-line.total strong{color:#ffb34e}.pay{width:100%;margin-top:5px}.secure{display:flex;justify-content:center;align-items:center;gap:6px;color:#9da0a4;font-size:11px;margin-top:12px}.secure b{color:var(--green)}.payment-label{font-size:12px;color:#aaa;margin:20px 0 9px}.payment-methods{display:flex;gap:7px}.payment-methods span{flex:1;text-align:center;border:1px solid #383941;border-radius:6px;padding:7px 3px;font-size:10px;font-weight:750;color:#d9d9dc;background:#141519}
+		.details{margin-top:24px}.details h2{font-size:20px;margin:0 0 12px}.details p{color:#b4b4bc;font-size:14px;margin:0 0 10px}.faq{margin-top:28px}.faq h2{font-size:20px}.faq details{border-top:1px solid var(--line);padding:14px 2px;color:#e6e6e8}.faq summary{cursor:pointer;font-weight:650}.faq details p{color:#aeb0b6;font-size:13px;margin:10px 0 0}.footer{border-top:1px solid #2d2e35;padding:24px 20px;text-align:center;color:#888a92;font-size:12px}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);background:#282a30;border:1px solid #484a52;padding:11px 18px;border-radius:9px;opacity:0;pointer-events:none;transition:.2s;z-index:10}.toast.show{opacity:1;transform:translate(-50%,0)}
+		@media(max-width:850px){.layout{grid-template-columns:1fr}.order-summary{position:static}.hero{padding:28px}.hero-badge{right:25px}.navlinks{display:none}.nav{gap:15px}.summary-card{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.summary-head,.summary-game,.pay,.secure,.payment-label,.payment-methods{grid-column:1/-1}}
+		@media(max-width:560px){.topbar{height:62px}.nav,.page{width:calc(100% - 28px)}.brand{font-size:17px}.brand-mark{width:33px;height:33px}.lang{padding:7px 8px;font-size:12px}.login{padding:7px 10px;font-size:12px}.nav-right{gap:7px}.page{margin-top:22px}.hero{height:190px;padding:24px 21px}.hero h1{font-size:27px;max-width:300px}.hero p{max-width:270px;font-size:13px}.hero:after{font-size:145px;right:-5px;top:15px}.hero-badge{right:15px;bottom:12px;font-size:10px;padding:7px 9px}.card{padding:17px}.packages{grid-template-columns:repeat(2,minmax(0,1fr))}.player-row{flex-direction:column}.primary{min-height:46px}.section-title{font-size:16px}.section-note{margin-left:41px}.summary-card{display:block}}
+	</style>
+</head>
+<body>
+	<header class="topbar">
+		<nav class="nav" aria-label="Main navigation">
+			<a class="brand" href="#" aria-label="CHEA SHOP home"><img class="brand-mark" src="image/logo.png" alt=""><span>CHEA <em>SHOP</em></span></a>
+			<div class="navlinks"><a href="webtop.html">Home</a><a href="#games">Games</a><a href="#how-it-works">How it works</a><a href="#help">Help center</a></div>
+			<div class="nav-right"><button class="lang" type="button">🇰🇭 &nbsp; EN⌄</button><a class="login" href="#login">Log in</a></div>
+		</nav>
+	</header>
+	<main class="page">
+		<div class="crumb">Home&nbsp; / &nbsp;Games&nbsp; / &nbsp;<span>Free Fire</span></div>
+		<section class="hero">
+			<div class="hero-content"><div class="eyebrow">Fast • Safe • Easy</div><h1>Free Fire Top Up</h1><p>Get diamonds instantly and jump back into the action.</p></div>
+			<div class="hero-badge">⚡ Instant delivery</div>
+		</section>
+		<div class="layout">
+			<div class="left">
+				<section class="card">
+					<h2 class="section-title"><span class="step">1</span> Enter your player ID</h2>
+					<p class="section-note">Find your Player ID in your in-game profile.</p>
+					<div class="player-row"><div class="input-wrap"><input id="playerId" type="text" inputmode="numeric" autocomplete="off" placeholder="Enter Player ID" aria-label="Player ID"></div><button class="primary" id="verifyBtn" type="button">Verify ID</button></div>
+					<div class="verify-msg" id="verifyMsg">✓ ID entered. Please make sure it is correct before payment.</div>
+				</section>
+				<section class="card" id="games">
+					<h2 class="section-title"><span class="step">2</span> Select a diamond package</h2>
+					<p class="section-note">Choose the amount you want to add to your account.</p>
+					<div class="packages" id="packages">
+						<button class="package" data-diamonds="100" data-price="1.00"><span class="diamonds"><span class="diamond-icon">◆</span>100 Diamonds</span><span class="price">$1.00</span></button>
+						<button class="package" data-diamonds="310" data-price="3.00"><span class="diamonds"><span class="diamond-icon">◆</span>310 Diamonds</span><span class="bonus">+ 10 bonus</span><span class="price">$3.00</span></button>
+						<button class="package" data-diamonds="520" data-price="5.00"><span class="popular">Popular</span><span class="diamonds"><span class="diamond-icon">◆</span>520 Diamonds</span><span class="bonus">+ 20 bonus</span><span class="price">$5.00</span></button>
+						<button class="package" data-diamonds="1060" data-price="10.00"><span class="diamonds"><span class="diamond-icon">◆</span>1,060 Diamonds</span><span class="bonus">+ 60 bonus</span><span class="price">$10.00</span></button>
+						<button class="package" data-diamonds="2180" data-price="20.00"><span class="diamonds"><span class="diamond-icon">◆</span>2,180 Diamonds</span><span class="bonus">+ 180 bonus</span><span class="price">$20.00</span></button>
+						<button class="package" data-diamonds="5600" data-price="50.00"><span class="diamonds"><span class="diamond-icon">◆</span>5,600 Diamonds</span><span class="bonus">+ 600 bonus</span><span class="price">$50.00</span></button>
+					</div>
+				</section>
+				<section class="card">
+					<h2 class="section-title"><span class="step">3</span> Choose payment</h2>
+					<p class="section-note">Secure checkout with your preferred payment method.</p>
+					<div class="payment-methods"><span>ABA PAY</span><span>KHQR</span><span>VISA</span><span>Mastercard</span></div>
+				</section>
+			</div>
+			<aside class="card order-summary summary-card">
+				<div class="summary-head">Order summary</div>
+				<div class="summary-game"><div class="game-icon">FF</div><div><div class="game-name">Free Fire</div><div class="game-sub">Diamond top up</div></div></div>
+				<div class="summary-line"><span>Player ID</span><strong id="summaryId">Not entered</strong></div>
+				<div class="summary-line"><span>Package</span><strong id="summaryPackage">Select a package</strong></div>
+				<div class="summary-line total"><span>Total</span><strong id="summaryPrice">$0.00</strong></div>
+				<button class="primary pay" id="payBtn" type="button">Continue to payment</button>
+				<div class="secure"><b>●</b> Secure and encrypted checkout</div>
+			</aside>
+		</div>
+		<section class="details" id="how-it-works"><h2>Top up Free Fire diamonds</h2><p>Choose a diamond package, enter your Player ID, and complete payment. Your purchase will be delivered directly to the game account associated with the ID you provide.</p><p>Please double-check your Player ID before placing an order. This demo storefront does not process payments.</p></section>
+		<section class="faq" id="help"><h2>Frequently asked questions</h2>
+			<details><summary>Where can I find my Player ID?</summary><p>Open Free Fire and tap your profile icon. Your Player ID is shown under your in-game name.</p></details>
+			<details><summary>How long does delivery take?</summary><p>Top-ups are typically delivered shortly after a successful payment. Delivery timing can vary.</p></details>
+			<details><summary>Do I need to share my game password?</summary><p>No. A top-up only requires your Player ID. Never share your account password.</p></details>
+		</section>
+	</main>
+	<footer class="footer">© 2025 Sabay Topup · Digital goods made easy</footer>
+	<div class="toast" id="toast" role="status">Enter your Player ID and select a package to continue.</div>
+	<script>
+		const packages = document.querySelectorAll('.package');
+		const idInput = document.getElementById('playerId');
+		const toast = document.getElementById('toast');
+		let selected = null;
+		packages.forEach(button => button.addEventListener('click', () => {
+			packages.forEach(item => item.classList.remove('selected'));
+			button.classList.add('selected'); selected = button;
+			document.getElementById('summaryPackage').textContent = `${button.dataset.diamonds} Diamonds`;
+			document.getElementById('summaryPrice').textContent = `$${Number(button.dataset.price).toFixed(2)}`;
+		}));
+		document.getElementById('verifyBtn').addEventListener('click', () => {
+			const value = idInput.value.trim();
+			document.getElementById('verifyMsg').classList.toggle('show', value.length > 0);
+			document.getElementById('summaryId').textContent = value || 'Not entered';
+			if (!value) idInput.focus();
+		});
+		idInput.addEventListener('input', () => {
+			document.getElementById('summaryId').textContent = idInput.value.trim() || 'Not entered';
+			document.getElementById('verifyMsg').classList.remove('show');
+		});
+		document.getElementById('payBtn').addEventListener('click', () => {
+			if (!idInput.value.trim() || !selected) {
+				toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2600);
+			} else {
+				window.location.href = 'https://webtopup.com';
+			}
+		});
+	</script>
+</body>
+</html>
